@@ -12,10 +12,8 @@ class _EndpointsConfigState extends State<EndpointsConfig> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-          children: [
-          Text("Content")
-      ],
-    ),
+        children: [Text("Adding Endpoints Place")],
+      ),
     );
   }
 }

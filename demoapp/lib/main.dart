@@ -1,5 +1,8 @@
 import 'package:demoapp/utils/fonts.dart';
 import 'package:demoapp/utils/SideMenuView.dart';
+import 'package:demoapp/views/MainNav.dart';
+import 'package:demoapp/views/SideNav.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -11,6 +14,8 @@ import 'controllers/constantsController.dart';
 ConstantsController constantsController = Get.find();
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Implementing the env file
   await dotenv.load(fileName: ".env");
 
@@ -52,29 +57,37 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey, // Ensure GlobalKey is accessible
-      appBar: AppBar(
-        title: Text(
-          'DevEase: Focus on your AI',
-          style: Fonts.normalReturn(),
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+        key: _scaffoldKey, // Ensure GlobalKey is accessible
+        appBar: AppBar(
+          title: Text(
+            'DevEase: Focus on your AI',
+            style: Fonts.normalReturn(),
           ),
-        ],
-        backgroundColor: constantsController.APPBAR_BACKGROUND_COLOR,
-      ),
-
-      body: const Column(
-        children: [
-          Row(
-            children: [],
-          )
-        ],
-      ),
-      drawer: const SideDrawerWidget(),
-    );
+          backgroundColor: constantsController.APPBAR_BACKGROUND_COLOR,
+        ),
+        body: SingleChildScrollView(
+            child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 2, vertical: 20),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          height: MediaQuery.of(context).size.height * 0.87,
+                          child: const SideNavViewer(),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.87,
+                          child: const MainNavViewer(),
+                        ),
+                      ],
+                    )
+                  ],
+                ))));
   }
 }

@@ -11,6 +11,6 @@ class Chatdialogue extends StatefulWidget {
 class _ChatdialogueState extends State<Chatdialogue> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Text("Chat Dialogue Place");
   }
 }
