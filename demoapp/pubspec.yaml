@@ -11,19 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
- 
-  cupertino_icons: ^1.0.6
-
-  # Accessing env variables
-  flutter_dotenv: 5.1.0
-
-  # SideMenu
-  flutter_side_menu:
-  badges:
-
-  # State management
-  get: 
-  google_fonts: ^6.2.1
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:
